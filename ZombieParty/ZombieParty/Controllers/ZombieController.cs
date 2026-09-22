@@ -122,6 +122,19 @@ namespace ZombieParty.Controllers
             }).OrderBy(t => t.Text);
 
             return View(zombieVM);
+
+        }
+        public IActionResult Attack(int zombieId, int weaponId)
+        {
+            Zombie? zombie = _baseDonnees.Zombies.Find(zombieId);
+            Weapon? weapon = _baseDonnees.Weapons.Find(weaponId);
+
+            ZombieWeaponViewModel zombieWeaponVM = new ZombieWeaponViewModel();
+            zombieWeaponVM.Zombie = zombie;
+            zombieWeaponVM.Weapon = weapon;
+
+            return View(zombieWeaponVM);
         }
     }
 }
+
